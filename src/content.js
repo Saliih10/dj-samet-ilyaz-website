@@ -17,8 +17,8 @@ export const copy = {
     nav: { home: "Startseite", gallery: "Galerie", references: "Referenzen", whatsApp: "WhatsApp" },
     footer: { imprint: "Impressum", privacy: "Datenschutzerklärung" },
     hero: {
-      title: "DJ & Sound für türkische Hochzeiten",
-      body: "Volle Tanzfläche, sauberer Ablauf und Musik, die Generationen verbindet.",
+      title: "DJ & Sound für türkische Feiern in NRW",
+      body: "Verlobung, Kına, Hochzeit, Sünnet oder Firmenevent: Musik, Sound und Stimmung für eine volle Tanzfläche.",
       cta: "Verfügbarkeit per WhatsApp prüfen",
       secondary: "Galerie ansehen",
     },
@@ -44,7 +44,7 @@ export const copy = {
       kicker: "Über mich",
       title: "Wer ist DJ Samet ILYAZ?",
       body:
-        "Bei türkischen Hochzeiten und Verlobungen entscheidet das Gespür für den richtigen Moment. Ich lese den Raum, verbinde Kulturen und Generationen und halte die Energie dort, wo sie hingehört: auf der Tanzfläche.",
+        "Bei Verlobungen, Kına-Abenden, Hochzeiten und türkischen Feiern entscheidet das Gespür für den richtigen Moment. Ich lese den Raum, verbinde Kulturen und Generationen und halte die Energie dort, wo sie hingehört: auf der Tanzfläche.",
       points: ["Türkisch, Deutsch & International", "DJ, Ton und Unterhaltung", "Fokus auf NRW"],
     },
     gallery: {
@@ -114,8 +114,8 @@ export const copy = {
     nav: { home: "Ana Sayfa", gallery: "Galeri", references: "Referanslar", whatsApp: "WhatsApp" },
     footer: { imprint: "Künye", privacy: "Gizlilik" },
     hero: {
-      title: "Türk düğünleri için DJ & ses",
-      body: "Dolu dans pisti, akıcı program ve nesilleri birleştiren müzik.",
+      title: "NRW'deki Türk eğlenceleri için DJ & ses",
+      body: "Nişan, kına, düğün, sünnet veya şirket etkinliği: dolu dans pisti için müzik, ses ve atmosfer.",
       cta: "WhatsApp'tan yaz",
       secondary: "Galeriyi gör",
     },
@@ -141,7 +141,7 @@ export const copy = {
       kicker: "Hakkımda",
       title: "DJ Samet ILYAZ kimdir?",
       body:
-        "Türk düğünlerinde ve nişanlarda doğru anı yakalamak çok önemlidir. Misafirleri okur, kültürleri ve nesilleri birleştirir, enerjiyi dans pistinde tutarım.",
+        "Nişanlarda, kına gecelerinde, düğünlerde ve Türk eğlencelerinde doğru anı yakalamak çok önemlidir. Misafirleri okur, kültürleri ve nesilleri birleştirir, enerjiyi dans pistinde tutarım.",
       points: ["Türkçe, Almanca & International", "DJ, ses ve eğlence", "NRW odaklı"],
     },
     gallery: {
