@@ -1368,7 +1368,7 @@ a {
   }
 
   .mega-name {
-    --mobile-mega-size: clamp(2.72rem, 9.8vw, 3.1rem);
+    --mobile-mega-size: clamp(3.26rem, 11.76vw, 3.72rem);
     position: relative;
     bottom: auto;
     left: auto;
@@ -1664,7 +1664,7 @@ a {
   }
 
   .mega-name {
-    --mobile-mega-size: clamp(2.25rem, 9.9vw, 2.55rem);
+    --mobile-mega-size: clamp(2.7rem, 11.88vw, 3.06rem);
     width: calc(100% - 24px);
   }
 }
