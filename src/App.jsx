@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import {
   ArrowRight,
   Baby,
@@ -142,6 +143,7 @@ function Hero({ t, lang }) {
     <section className="hero section-with-pattern">
       <div className="hero-bg" aria-hidden="true">
         <img src={heroImage} alt="" />
+        <HeroShootingStars />
       </div>
       <div className="hero-content">
         <h1>{t.hero.title}</h1>
@@ -160,6 +162,110 @@ function Hero({ t, lang }) {
       <MegaName />
     </section>
   );
+}
+
+function HeroShootingStars() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ctx = canvas.getContext("2d");
+    if (!ctx || prefersReducedMotion) return undefined;
+
+    let animationFrame = 0;
+    let lastTime = performance.now();
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let meteors = [];
+
+    const createMeteor = (fresh = false) => {
+      const length = width * (0.12 + Math.random() * 0.18);
+      return {
+        x: fresh ? Math.random() * width : -length - Math.random() * width,
+        y: height * (0.13 + Math.random() * 0.58),
+        length,
+        speed: width * (0.22 + Math.random() * 0.2),
+        drift: height * (-0.015 + Math.random() * 0.035),
+        alpha: 0.34 + Math.random() * 0.42,
+        width: 1.15 + Math.random() * 1.55,
+      };
+    };
+
+    const resize = () => {
+      const bounds = canvas.getBoundingClientRect();
+      width = Math.max(1, bounds.width);
+      height = Math.max(1, bounds.height);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = width < 760 ? 5 : 9;
+      meteors = Array.from({ length: count }, () => createMeteor(true));
+    };
+
+    const drawMeteor = (meteor) => {
+      const tailX = meteor.x - meteor.length;
+      const tailY = meteor.y - meteor.drift * 0.55;
+      const gradient = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+      gradient.addColorStop(0, "rgba(143, 53, 255, 0)");
+      gradient.addColorStop(0.48, `rgba(143, 53, 255, ${meteor.alpha * 0.72})`);
+      gradient.addColorStop(0.86, `rgba(216, 61, 242, ${meteor.alpha})`);
+      gradient.addColorStop(1, `rgba(238, 218, 255, ${Math.min(0.92, meteor.alpha + 0.26)})`);
+
+      ctx.save();
+      ctx.globalCompositeOperation = "lighter";
+      ctx.shadowColor = "rgba(143, 53, 255, 0.88)";
+      ctx.shadowBlur = 24;
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = meteor.width;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(meteor.x, meteor.y);
+      ctx.stroke();
+
+      ctx.shadowBlur = 10;
+      ctx.fillStyle = `rgba(238, 218, 255, ${Math.min(0.85, meteor.alpha + 0.18)})`;
+      ctx.beginPath();
+      ctx.arc(meteor.x, meteor.y, meteor.width * 1.35, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const render = (now) => {
+      const delta = Math.min((now - lastTime) / 1000, 0.04);
+      lastTime = now;
+      ctx.clearRect(0, 0, width, height);
+
+      for (const meteor of meteors) {
+        meteor.x += meteor.speed * delta;
+        meteor.y += meteor.drift * delta;
+        drawMeteor(meteor);
+
+        if (meteor.x - meteor.length > width + 120 || meteor.y < -80 || meteor.y > height + 80) {
+          Object.assign(meteor, createMeteor(false));
+        }
+      }
+
+      animationFrame = requestAnimationFrame(render);
+    };
+
+    resize();
+    animationFrame = requestAnimationFrame(render);
+    window.addEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="hero-shooting-stars" aria-hidden="true" />;
 }
 
 function MegaName() {
