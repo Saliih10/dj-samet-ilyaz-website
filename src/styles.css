@@ -25,14 +25,12 @@
 }
 
 html {
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  overflow-x: hidden;
   background:
     radial-gradient(circle at 85% 6%, rgba(150, 54, 255, 0.18), transparent 30rem),
     radial-gradient(circle at 14% 38%, rgba(216, 61, 242, 0.1), transparent 28rem),
@@ -223,10 +221,6 @@ a {
   padding: 0 22px;
   border: 1px solid var(--border);
   font-size: 1rem;
-}
-
-.button-label {
-  min-width: 0;
 }
 
 .button.primary {
@@ -1284,7 +1278,6 @@ a {
 
   .header {
     top: 12px;
-    grid-template-columns: minmax(0, 1fr) auto;
     width: calc(100% - 24px);
     min-height: 64px;
     gap: 12px;
@@ -1356,10 +1349,8 @@ a {
 
   .hero h1,
   .page-hero h1 {
-    max-width: 100%;
-    font-size: 2.38rem;
+    font-size: 2.55rem;
     line-height: 1.04;
-    overflow-wrap: break-word;
   }
 
   .hero p,
@@ -1374,22 +1365,6 @@ a {
 
   .button {
     width: 100%;
-    max-width: 100%;
-    min-height: 54px;
-    padding: 12px 16px;
-    gap: 8px;
-    line-height: 1.16;
-    text-align: center;
-    white-space: normal;
-  }
-
-  .button-label {
-    overflow-wrap: anywhere;
-  }
-
-  .button svg,
-  .button .whatsapp-icon {
-    flex: 0 0 auto;
   }
 
   .mega-name {
@@ -1419,11 +1394,11 @@ a {
   }
 
   .mega-mobile-line {
+    --split: 50%;
     position: relative;
     display: block;
     width: 100%;
     height: calc(var(--mobile-mega-size) * 0.9);
-    color: #fff;
     font-family: "Arial Black", Inter, ui-sans-serif, system-ui, sans-serif;
     font-size: var(--mobile-mega-size);
     font-style: normal;
@@ -1431,10 +1406,8 @@ a {
     line-height: 0.9;
     letter-spacing: 0;
     text-align: center;
-    text-shadow: 0 24px 64px rgba(0, 0, 0, 0.78);
     white-space: nowrap;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: geometricPrecision;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent) center 50% / 100% 1px no-repeat;
   }
 
   .mega-mobile-line + .mega-mobile-line {
@@ -1443,25 +1416,27 @@ a {
 
   .mega-mobile-line::before,
   .mega-mobile-line::after {
+    content: attr(data-text);
     position: absolute;
+    inset: 0;
   }
 
   .mega-mobile-line::before {
-    content: attr(data-text);
-    inset: 0;
     color: transparent;
-    opacity: 0.34;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.42);
-    transform: translateY(-0.12em);
+    opacity: 0.86;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    clip-path: inset(0 0 calc(100% - var(--split)) 0);
   }
 
   .mega-mobile-line::after {
-    content: "";
-    top: 50%;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.26), transparent);
+    color: #fff;
+    clip-path: inset(var(--split) 0 0 0);
+    text-shadow: 0 24px 64px rgba(0, 0, 0, 0.78);
+  }
+
+  .mega-mobile-line::before,
+  .mega-mobile-line::after {
+    -webkit-text-stroke-width: 1px;
   }
 
   .intro-section {
