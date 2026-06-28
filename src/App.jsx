@@ -151,7 +151,7 @@ function Hero({ t, lang }) {
         <div className="hero-actions">
           <a className="button primary" href={whatsappUrl(lang)} target="_blank" rel="noreferrer">
             <WhatsAppIcon size={21} />
-            {t.hero.cta}
+            <span className="button-label">{t.hero.cta}</span>
           </a>
           <a className="button ghost" href={paths[lang].gallery}>
             {t.hero.secondary}
@@ -274,8 +274,12 @@ function MegaName() {
       <span className="mega-readable">DJ SAMET ILYAZ</span>
       <span className="mega-split-line" />
       <span className="mega-mobile-lines">
-        <span className="mega-mobile-line" data-text="DJ SAMET" />
-        <span className="mega-mobile-line" data-text="ILYAZ" />
+        <span className="mega-mobile-line" data-text="DJ SAMET">
+          DJ SAMET
+        </span>
+        <span className="mega-mobile-line" data-text="ILYAZ">
+          ILYAZ
+        </span>
       </span>
     </div>
   );
@@ -435,7 +439,7 @@ function FinalCta({ t, lang }) {
         <p>{t.final.body}</p>
         <a className="button primary large" href={whatsappUrl(lang)} target="_blank" rel="noreferrer">
           <WhatsAppIcon size={24} />
-          {t.final.cta}
+          <span className="button-label">{t.final.cta}</span>
         </a>
         <div className="cta-notes">
           {t.final.notes.map((note) => (
