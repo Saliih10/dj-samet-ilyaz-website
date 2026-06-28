@@ -16,16 +16,16 @@ import {
 } from "lucide-react";
 import { copy, paths, whatsapp, whatsappPhone } from "./content.js";
 
-const logoImage = "/assets/dj-samet-logo.png";
-const heroImage = "/assets/hero-wedding-dj.png";
-const eventBandImage = "/assets/event-dancefloor-band.png";
-const aboutImage = "/assets/samet-about-crop.jpg";
-const originalImage = "/assets/samet-original.jpg";
-const galleryWeddingImage = "/assets/gallery-wedding.png";
-const galleryEngagementImage = "/assets/gallery-engagement.png";
-const galleryKinaImage = "/assets/gallery-kina.png";
-const gallerySunnetImage = "/assets/gallery-sunnet.png";
-const galleryCorporateImage = "/assets/gallery-corporate.png";
+const logoImage = "/assets/dj-samet-logo.webp";
+const heroImage = "/assets/hero-wedding-dj.webp";
+const eventBandImage = "/assets/event-dancefloor-band.webp";
+const aboutImage = "/assets/samet-about-crop.webp";
+const originalImage = "/assets/samet-original.webp";
+const galleryWeddingImage = "/assets/gallery-wedding.webp";
+const galleryEngagementImage = "/assets/gallery-engagement.webp";
+const galleryKinaImage = "/assets/gallery-kina.webp";
+const gallerySunnetImage = "/assets/gallery-sunnet.webp";
+const galleryCorporateImage = "/assets/gallery-corporate.webp";
 const instagramUrl = "https://www.instagram.com/djsametilyaz/";
 
 const serviceIcons = [HeartHandshake, Gem, HandHeart, Baby, BriefcaseBusiness];
@@ -98,7 +98,7 @@ function Header({ t, lang, page }) {
   return (
     <header className="header">
       <a className="brand logo-brand" href={nav.home} aria-label="DJ Samet ILYAZ">
-        <img className="brand-logo" src={logoImage} alt="DJ Samet ILYAZ" />
+        <img className="brand-logo" src={logoImage} alt="DJ Samet ILYAZ" decoding="async" />
       </a>
 
       <nav className="nav" aria-label="Hauptnavigation">
@@ -142,7 +142,7 @@ function Hero({ t, lang }) {
   return (
     <section className="hero section-with-pattern">
       <div className="hero-bg" aria-hidden="true">
-        <img src={heroImage} alt="" />
+        <img src={heroImage} alt="" decoding="async" fetchPriority="high" />
         <HeroShootingStars />
       </div>
       <div className="hero-content">
@@ -320,7 +320,7 @@ function IntroServices({ t }) {
 function MediaBand({ t, lang }) {
   return (
     <section className="media-band">
-      <img src={eventBandImage} alt="" />
+      <img src={eventBandImage} alt="" loading="lazy" decoding="async" />
       <div className="play-button" aria-hidden="true">
         <Play size={32} fill="currentColor" />
       </div>
@@ -340,7 +340,7 @@ function About({ t }) {
     <section className="about-section section-with-pattern">
       <div className="container about-grid">
         <figure className="about-photo">
-          <img src={aboutImage} alt="DJ Samet ILYAZ am DJ-Controller" />
+          <img src={aboutImage} alt="DJ Samet ILYAZ am DJ-Controller" loading="lazy" decoding="async" />
         </figure>
         <div className="section-copy about-copy">
           <p className="section-kicker">{t.about.kicker}</p>
@@ -383,7 +383,7 @@ function GalleryPreview({ t, lang }) {
         <div className="gallery-grid">
           {items.map((item) => (
             <a className={`gallery-card ${item.className}`} href={paths[lang].gallery} key={item.title}>
-              <img src={item.image} alt="" />
+              <img src={item.image} alt="" loading="lazy" decoding="async" />
               <span>{item.title}</span>
             </a>
           ))}
@@ -469,7 +469,7 @@ function GalleryPage({ t, lang }) {
           <div className="gallery-masonry">
             {galleryTiles.map((tile) => (
               <article className={`masonry-tile ${tile.size}`} key={`${tile.title}-${tile.size}`}>
-                <img src={tile.image} alt="" />
+                <img src={tile.image} alt="" loading="lazy" decoding="async" />
                 <div>
                   <Images size={18} />
                   <span>{tile.title}</span>
@@ -497,7 +497,7 @@ function ReferencesPage({ t, lang }) {
       <section className="subpage-section">
         <div className="container references-layout">
           <div className="reference-visual">
-            <img src={eventBandImage} alt="" />
+            <img src={eventBandImage} alt="" loading="lazy" decoding="async" />
           </div>
           <div className="reference-cards">
             {t.referencesPage.cards.map(([title, text]) => (
@@ -519,7 +519,7 @@ function PageHero({ title, body }) {
   return (
     <section className="page-hero section-with-pattern">
       <div className="page-hero-bg" aria-hidden="true">
-        <img src={heroImage} alt="" />
+        <img src={heroImage} alt="" decoding="async" fetchPriority="high" />
       </div>
       <div className="container">
         <p className="section-kicker">DJ Samet ILYAZ</p>
@@ -583,7 +583,7 @@ function Footer({ t, lang }) {
     <footer className="footer">
       <div className="container footer-inner">
         <a className="brand logo-brand footer-brand" href={paths[lang].home} aria-label="DJ Samet ILYAZ">
-          <img className="brand-logo" src={logoImage} alt="DJ Samet ILYAZ" />
+          <img className="brand-logo" src={logoImage} alt="DJ Samet ILYAZ" loading="lazy" decoding="async" />
         </a>
         <div className="footer-links">
           <a className="footer-social" href={instagramUrl} target="_blank" rel="noreferrer">
