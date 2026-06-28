@@ -19,7 +19,7 @@ export const copy = {
     hero: {
       title: "DJ & Sound für türkische Hochzeiten",
       body: "Volle Tanzfläche, sauberer Ablauf und Musik, die Generationen verbindet.",
-      cta: "WhatsApp anfragen",
+      cta: "Verfügbarkeit per WhatsApp prüfen",
       secondary: "Galerie ansehen",
     },
     intro: {
@@ -68,7 +68,7 @@ export const copy = {
       kicker: "Lass uns dein Event unvergesslich machen",
       title: "Bereit für deine perfekte Feier?",
       body: "Schreib mir jetzt auf WhatsApp. Ich freue mich auf deine Nachricht.",
-      cta: "WhatsApp anfragen",
+      cta: "Verfügbarkeit per WhatsApp prüfen",
       notes: ["Schnelle Antwort", "Unverbindliche Anfrage", "Individuelle Beratung"],
     },
     galleryPage: {
